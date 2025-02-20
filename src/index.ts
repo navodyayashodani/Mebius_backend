@@ -15,7 +15,7 @@ const app = express();
 // Middleware order is important
 app.use(express.json());
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: "https://fed-storefront-frontend-harindi.netlify.app",
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
