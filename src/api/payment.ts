@@ -1,6 +1,10 @@
-import express from "express";
-import { handleWebhook } from "../application/payment";
+import express from 'express';
+import { handleWebhook, createCheckoutSession } from '../application/payment';
 
-export const paymentsRouter = express.Router();
+export const paymentRouter = express.Router();
+// Webhook doesn't need auth
+paymentRouter.route("/webhook").post(handleWebhook as any);
 
-paymentsRouter.route("/webhook").post(handleWebhook);
+// Protected route
+paymentRouter.post('/create-checkout-session', createCheckoutSession as any);
+

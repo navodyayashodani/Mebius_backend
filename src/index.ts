@@ -7,8 +7,9 @@ import globalErrorHandlingMiddleware from "./api/middleware/global-error-handlin
 import { categoryRouter } from "./api/category";
 import cors from "cors";
 import { orderRouter } from "./api/order";
-import { paymentsRouter } from "./api/payment";
-import { ClerkExpressWithAuth } from "@clerk/clerk-sdk-node";
+import { paymentRouter } from './api/payment';
+
+// import { clerkMiddleware } from "@clerk/express";
 
 const app = express();
 
@@ -21,14 +22,14 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
-// Use only ClerkExpressWithAuth
-app.use(ClerkExpressWithAuth());
+
+
 
 // Routes
 app.use("/api/products", productRouter);
 app.use("/api/categories", categoryRouter);
 app.use("/api/orders", orderRouter);
-app.use("/api/payments", paymentsRouter);
+app.use("/api/payments", paymentRouter);
 
 app.use(globalErrorHandlingMiddleware as any);
 
